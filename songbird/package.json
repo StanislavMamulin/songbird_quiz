@@ -1,0 +1,23 @@
+{
+  "name": "songbird",
+  "version": "1.0.0",
+  "description": "A Songbird quiz",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rolling-scopes-school/stanislavmamulin-JSFE2022Q3.git#songbird"
+  },
+  "keywords": [
+    "quiz",
+    "birds"
+  ],
+  "author": "Stanislav Mamulin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rolling-scopes-school/stanislavmamulin-JSFE2022Q3/issues"
+  },
+  "homepage": "https://github.com/rolling-scopes-school/stanislavmamulin-JSFE2022Q3/tree/songbird#readme"
+}
