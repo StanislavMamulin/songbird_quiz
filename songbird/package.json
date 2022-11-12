@@ -19,5 +19,10 @@
   "bugs": {
     "url": "https://github.com/rolling-scopes-school/stanislavmamulin-JSFE2022Q3/issues"
   },
-  "homepage": "https://github.com/rolling-scopes-school/stanislavmamulin-JSFE2022Q3/tree/songbird#readme"
+  "homepage": "https://github.com/rolling-scopes-school/stanislavmamulin-JSFE2022Q3/tree/songbird#readme",
+  "devDependencies": {
+    "eslint": "^8.27.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
+  }
 }
