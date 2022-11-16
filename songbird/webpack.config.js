@@ -5,6 +5,7 @@ module.exports = {
   context: path.resolve(__dirname, 'src'),
   entry: {
     main: './pages/main/index.js',
+    quiz: './pages/quiz/index.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -36,6 +37,10 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: './pages/main/index.html',
       filename: './index.html',
+    }),
+    new HtmlWebPackPlugin({
+      template: './pages/quiz/index.html',
+      filename: './quiz.html',
     }),
   ],
   mode: 'development',
