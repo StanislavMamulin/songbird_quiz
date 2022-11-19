@@ -2,6 +2,21 @@
   padding: 16px;
 }
 
+.top-panel__info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 0;
+  margin-bottom: 8px;
+}
+
+.logo {
+  width: auto;
+  height: 32px;
+}
+
 .question-categories {
   display: flex;
   flex-direction: row;
