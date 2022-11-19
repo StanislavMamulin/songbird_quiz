@@ -1,4 +1,4 @@
-const birdsData = [
+export const birdsData = [
   [
     {
       id: 1,
@@ -301,4 +301,4 @@ const birdsData = [
   ],
 ];
 
-export default birdsData;
+export const quizCategories = ['Разминка', 'Воробьиные', 'Лесные птицы', 'Певчие птицы', 'Хищные птицы', 'Морские птицы'];
