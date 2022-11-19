@@ -49,6 +49,6 @@
   color: #6a72bd;
 }
 
-.question-categories__item--active {
+.question-categories__item_active {
   background-color: rgba(255, 255, 255, 0.8);
 }
