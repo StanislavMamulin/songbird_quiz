@@ -1,0 +1,69 @@
+.bird-player {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  padding: 8px;
+  height: 200px;
+}
+
+.bird-image {
+  margin-right: 16px;
+
+  flex: 2;
+  height: 100%;
+  border-radius: 5px; 
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+  flex: 5;
+}
+
+.player__details {
+  padding-bottom: 8px;
+}
+
+.playpause {
+  width: 72px;
+}
+
+.player__play-and-sound {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.seek-slider {
+  padding-bottom: 16px;
+  width: 100%;
+}
+
+.seek-slider__slider {
+  width: 100%;
+}
+
+.seek-slider__times {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.sound-slider {
+  display: flex;
+  align-items: center;
+}
+
+.sound-slider__volume {
+  height: 16px;
+}
+
+.sound-slider__volume_low {
+  padding-right: 8px;
+}
+
+.sound-slider__volume_high {
+  padding-left: 8px;
+}
