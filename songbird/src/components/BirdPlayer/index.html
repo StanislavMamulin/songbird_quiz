@@ -6,7 +6,7 @@
       <div class="bird-lat-name"></div>
     </div>
     <div class="seek-slider">
-      <input class="seek-slider__slider" type="range" min="1" max="100" value="0" onchange="seekTo()">
+      <input class="slider seek-slider__slider" type="range" min="1" max="100" value="0" onchange="seekTo()">
       <div class="seek-slider__times">
         <div class="seek-slider__current-time">00:00</div>
         <div class="seek-slider__total-time">00:00</div>
@@ -14,11 +14,11 @@
     </div>
     <div class="player__play-and-sound">
       <div class="playpause">
-        <img alt="Play pause" src="../../assets/vectors/circle-play.svg">
+        <img class="playpause__image" alt="Play pause" src="../../assets/vectors/circle-play.svg">
       </div>
       <div class="sound-slider">
         <img class="sound-slider__volume sound-slider__volume_low" src="../../assets/vectors/volume-low.svg" alt="Volume low">
-        <input type="range" min="1" max="100" value="99" class="sound-slider__slider" onchange="setVolume()">
+        <input class="slider sound-slider__slider" type="range" min="1" max="100" value="99" onchange="setVolume()">
         <img class="sound-slider__volume sound-slider__volume_high" src="../../assets/vectors/volume-high.svg" alt="Volume high">
       </div>
     </div>

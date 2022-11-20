@@ -27,6 +27,12 @@
 
 .playpause {
   width: 72px;
+  opacity: 0.8;
+  transition: opacity .2s;
+}
+
+.playpause:hover {
+  opacity: 1.0;
 }
 
 .player__play-and-sound {
@@ -39,6 +45,25 @@
 .seek-slider {
   padding-bottom: 16px;
   width: 100%;
+}
+
+.slider {
+  background: var(--lightest-primary-color);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: 5px;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: var(--darker-primary-color);
+  cursor: pointer;
+  border-radius: 50%;
 }
 
 .seek-slider__slider {

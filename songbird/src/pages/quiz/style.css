@@ -1,3 +1,10 @@
+:root {
+  --primary-color: #6A72BD;
+  --darker-primary-color: #4A52A4;
+  --darkest-primary-color: #303991;
+  --lighter-primary-color: #949BD8;
+  --lightest-primary-color: #C5C9EE;
+}
 .main {
   background: url('../../assets/images/background.png');
   padding: 16px;
