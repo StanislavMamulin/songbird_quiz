@@ -1,10 +1,12 @@
 import './styles.css';
 import { AnswerButton, setStatus } from '../AnswerButton/index';
 
-const buttons = [];
+let buttons = [];
 
 export const generateAnswersList = (answers = [], answerClickHandler = () => {}) => {
   const answersElement = document.querySelector('.answers');
+  buttons = [];
+  answersElement.replaceChildren();
 
   answers.forEach((answer) => {
     const answerButton = AnswerButton({ title: answer, onclick: answerClickHandler });
