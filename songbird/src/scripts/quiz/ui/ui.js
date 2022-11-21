@@ -36,3 +36,8 @@ export const setActiveCategory = (categoryIndex) => {
   categories.forEach((category) => disableCategory(category));
   activateCategory(categories[categoryIndex]);
 };
+
+export const setScore = (score) => {
+  const scoreElement = document.querySelector('.top-panel__info__score');
+  scoreElement.innerText = `Score: ${score}`;
+};
