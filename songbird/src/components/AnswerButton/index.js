@@ -16,8 +16,10 @@ export const AnswerButton = ({ title = '', onclick = () => {} }) => {
 
 export const setStatus = (button, answerStatus) => {
   if (answerStatus === answerStatuses.correct) {
-    button.classList.add('indicator_correct');
+    const indicator = button.querySelector('.indicator');
+    indicator.classList.add('indicator_correct');
   } else if (answerStatus === answerStatuses.wrong) {
-    button.classList.add('indicator_wrong');
+    const indicator = button.querySelector('.indicator');
+    indicator.classList.add('indicator_wrong');
   }
 };

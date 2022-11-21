@@ -1,12 +1,25 @@
 import { getTitleFromAnswerButton, getAnswersForCategory, getRandomBirdFromCategory } from './getdata';
 import { quizCategories } from '../../data/birds';
 import { changeTheBird } from '../../components/BirdPlayer';
+import { answerStatuses } from '../../data/statuses';
+import { setStatusForButton } from '../../components/Answers/index';
 
 let currentCategoryIndex = 0;
 let currentBird;
+let isAnswerFinded = false;
 
 export const answerClickHandler = (title) => {
-  getTitleFromAnswerButton(title);
+  if (isAnswerFinded) {
+    return;
+  }
+
+  const birdName = getTitleFromAnswerButton(title);
+  if (birdName === currentBird.name) {
+    setStatusForButton(birdName, answerStatuses.correct);
+    isAnswerFinded = true;
+  } else {
+    setStatusForButton(birdName, answerStatuses.wrong);
+  }
 };
 
 export const switchToNextCategory = () => {
