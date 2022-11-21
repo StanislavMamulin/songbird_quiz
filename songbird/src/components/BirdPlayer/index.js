@@ -7,172 +7,161 @@ import pauseIcon from '../../assets/vectors/circle-pause.svg';
 import playIcon from '../../assets/vectors/circle-play.svg';
 import secretBird from '../../assets/images/bird-silhouettes.png';
 
-export const BirdPlayer = () => htmlToElement(birdPlayer);
-
-let seekSliderElement;
-let currentTimeElement;
-let totalTimeElement;
-
-let playPauseElement;
-let playPauseImageElement;
-let soundSliderElement;
-let birdImageElement;
-let birdNameElement;
-let birdLatinNameElement;
-
-// constants
-const currSong = document.createElement('audio');
 const SECRET_BIRD_NAME = '* * * * * * * *';
 const DEFAULT_LATIN_NAME = '';
 
-// state variables
-let updateTimer;
-let isPlaying = false;
-let curBirdName = '';
-let curBirdLatinName = '';
-let curBirdImagePath;
+export class BirdPlayer {
+  constructor() {
+    this.player = htmlToElement(birdPlayer);
 
-const setElements = () => {
-  seekSliderElement = document.querySelector('.seek-slider__slider');
-  currentTimeElement = document.querySelector('.seek-slider__current-time');
-  totalTimeElement = document.querySelector('.seek-slider__total-time');
-
-  playPauseElement = document.querySelector('.playpause');
-  playPauseImageElement = document.querySelector('.playpause__image');
-  soundSliderElement = document.querySelector('.sound-slider__slider');
-
-  birdImageElement = document.querySelector('.bird-image');
-  birdNameElement = document.querySelector('.bird-name');
-  birdLatinNameElement = document.querySelector('.bird-lat-name');
-};
-
-const resetValues = () => {
-  currentTimeElement.textContent = '00:00';
-  totalTimeElement.textContent = '00:00';
-  seekSliderElement.value = 0;
-};
-
-const seekUpdate = () => {
-  if (!Number.isNaN(currSong.duration)) {
-    const seekPosition = currSong.currentTime * (100 / currSong.duration);
-    seekSliderElement.value = seekPosition;
-
-    // Calculate the time left and the total duration
-    let currentMinutes = Math.floor(currSong.currentTime / 60);
-    let currentSeconds = Math.floor(currSong.currentTime - currentMinutes * 60);
-    let durationMinutes = Math.floor(currSong.duration / 60);
-    let durationSeconds = Math.floor(currSong.duration - durationMinutes * 60);
-
-    currentMinutes = getTwoDigitsNumber(currentMinutes);
-    currentSeconds = getTwoDigitsNumber(currentSeconds);
-    durationMinutes = getTwoDigitsNumber(durationMinutes);
-    durationSeconds = getTwoDigitsNumber(durationSeconds);
-
-    // Display the updated duration
-    currentTimeElement.textContent = `${currentMinutes}:${currentSeconds}`;
-    totalTimeElement.textContent = `${durationMinutes}:${durationSeconds}`;
+    this.currSong = document.createElement('audio');
+    this.isPlaying = false;
+    this.curBirdName = '';
+    this.curBirdLatinName = '';
   }
-};
 
-export const loadSong = (audioPath) => {
-  clearInterval(updateTimer);
-  resetValues();
+  setElements = () => {
+    this.seekSliderElement = this.player.querySelector('.seek-slider__slider');
+    this.currentTimeElement = this.player.querySelector('.seek-slider__current-time');
+    this.totalTimeElement = this.player.querySelector('.seek-slider__total-time');
 
-  currSong.src = audioPath;
-  currSong.load();
-  updateTimer = setInterval(seekUpdate, 1000);
-};
+    this.playPauseElement = this.player.querySelector('.playpause');
+    this.playPauseImageElement = this.player.querySelector('.playpause__image');
+    this.soundSliderElement = this.player.querySelector('.sound-slider__slider');
 
-const playSong = () => {
-  currSong.play();
-  isPlaying = true;
+    this.birdImageElement = this.player.querySelector('.bird-image');
+    this.birdNameElement = this.player.querySelector('.bird-name');
+    this.birdLatinNameElement = this.player.querySelector('.bird-lat-name');
+  };
 
-  playPauseImageElement.src = pauseIcon;
-};
+  resetValues = () => {
+    this.currentTimeElement.textContent = '00:00';
+    this.totalTimeElement.textContent = '00:00';
+    this.seekSliderElement.value = 0;
+  };
 
-export const pauseSong = () => {
-  currSong.pause();
-  isPlaying = false;
+  seekUpdate = () => {
+    if (!Number.isNaN(this.currSong.duration)) {
+      const seekPosition = this.currSong.currentTime * (100 / this.currSong.duration);
+      this.seekSliderElement.value = seekPosition;
 
-  playPauseImageElement.src = playIcon;
-};
+      // Calculate the time left and the total duration
+      let currentMinutes = Math.floor(this.currSong.currentTime / 60);
+      let currentSeconds = Math.floor(this.currSong.currentTime - currentMinutes * 60);
+      let durationMinutes = Math.floor(this.currSong.duration / 60);
+      let durationSeconds = Math.floor(this.currSong.duration - durationMinutes * 60);
 
-const playpauseSong = () => {
-  if (isPlaying) {
-    pauseSong();
-  } else {
-    playSong();
-  }
-};
+      currentMinutes = getTwoDigitsNumber(currentMinutes);
+      currentSeconds = getTwoDigitsNumber(currentSeconds);
+      durationMinutes = getTwoDigitsNumber(durationMinutes);
+      durationSeconds = getTwoDigitsNumber(durationSeconds);
 
-const seekTo = () => {
-  const seekPostition = currSong.duration * (seekSliderElement.value / 100);
-  currSong.currentTime = seekPostition;
-};
+      // Display the updated duration
+      this.currentTimeElement.textContent = `${currentMinutes}:${currentSeconds}`;
+      this.totalTimeElement.textContent = `${durationMinutes}:${durationSeconds}`;
+    }
+  };
 
-const setVolume = () => {
-  currSong.volume = soundSliderElement.value / 100;
-};
+  loadSong = (audioPath) => {
+    clearInterval(this.updateTimer);
+    this.resetValues();
 
-const addEventListeners = () => {
-  playPauseElement.addEventListener('click', playpauseSong);
-  soundSliderElement.addEventListener('change', setVolume);
-  seekSliderElement.addEventListener('change', seekTo);
-};
+    this.currSong.src = audioPath;
+    this.currSong.load();
+    this.updateTimer = setInterval(this.seekUpdate, 1000);
+  };
 
-const showBirdInfo = (birdInfo) => {
-  const {
-    imagePath = '',
-    birdName = '',
-    birdLatinName = '',
-  } = birdInfo;
+  playSong = () => {
+    this.currSong.play();
+    this.isPlaying = true;
 
-  birdImageElement.src = imagePath;
-  birdNameElement.textContent = birdName;
-  birdLatinNameElement.textContent = birdLatinName;
-};
+    this.playPauseImageElement.src = pauseIcon;
+  };
 
-export const showRightAnswer = () => {
-  showBirdInfo({
-    imagePath: curBirdImagePath,
-    birdName: curBirdName,
-  });
-};
+  pauseSong = () => {
+    this.currSong.pause();
+    this.isPlaying = false;
 
-export const showFullInfo = () => {
-  showBirdInfo({
-    imagePath: curBirdImagePath,
-    birdName: curBirdName,
-    birdLatinName: curBirdLatinName,
-  });
-};
+    this.playPauseImageElement.src = playIcon;
+  };
 
-const hideTheBird = () => {
-  showBirdInfo({
-    imagePath: secretBird,
-    birdName: SECRET_BIRD_NAME,
-    birdLatinName: DEFAULT_LATIN_NAME,
-  });
-};
+  playpauseSong = () => {
+    if (this.isPlaying) {
+      this.pauseSong();
+    } else {
+      this.playSong();
+    }
+  };
 
-export const changeTheBird = (birdInfo) => {
-  const {
-    name,
-    species,
-    image,
-    audio,
-  } = birdInfo;
+  seekTo = () => {
+    const seekPostition = this.currSong.duration * (this.seekSliderElement.value / 100);
+    this.currSong.currentTime = seekPostition;
+  };
 
-  hideTheBird();
+  setVolume = () => {
+    this.currSong.volume = this.soundSliderElement.value / 100;
+  };
 
-  curBirdName = name;
-  curBirdImagePath = image;
-  curBirdLatinName = species;
-  loadSong(audio);
-};
+  addEventListeners = () => {
+    this.playPauseElement.addEventListener('click', this.playpauseSong);
+    this.soundSliderElement.addEventListener('change', this.setVolume);
+    this.seekSliderElement.addEventListener('change', this.seekTo);
+  };
 
-export const initPlayer = () => {
-  setElements();
-  addEventListeners();
-  hideTheBird();
-};
+  showBirdInfo = (birdInfo) => {
+    const {
+      imagePath = '',
+      birdName = '',
+      birdLatinName = '',
+    } = birdInfo;
+
+    this.birdImageElement.src = imagePath;
+    this.birdNameElement.textContent = birdName;
+    this.birdLatinNameElement.textContent = birdLatinName;
+  };
+
+  showRightAnswer = () => {
+    this.showBirdInfo({
+      imagePath: this.curBirdImagePath,
+      birdName: this.curBirdName,
+    });
+  };
+
+  showFullInfo = () => {
+    this.showBirdInfo({
+      imagePath: this.curBirdImagePath,
+      birdName: this.curBirdName,
+      birdLatinName: this.curBirdLatinName,
+    });
+  };
+
+  hideTheBird = () => {
+    this.showBirdInfo({
+      imagePath: secretBird,
+      birdName: SECRET_BIRD_NAME,
+      birdLatinName: DEFAULT_LATIN_NAME,
+    });
+  };
+
+  changeTheBird = (birdInfo) => {
+    const {
+      name,
+      species,
+      image,
+      audio,
+    } = birdInfo;
+    this.hideTheBird();
+
+    this.curBirdName = name;
+    this.curBirdImagePath = image;
+    this.curBirdLatinName = species;
+    this.pauseSong();
+    this.loadSong(audio);
+  };
+
+  initPlayer = () => {
+    this.setElements();
+    this.addEventListeners();
+    this.hideTheBird();
+  };
+}

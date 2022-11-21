@@ -1,23 +1,25 @@
 import './styles.css';
-import { BirdPlayer, initPlayer, loadSong } from '../BirdPlayer';
+import { BirdPlayer } from '../BirdPlayer';
+
+const birdPlayer = new BirdPlayer();
 
 const addPlayer = () => {
   const birdInfoElement = document.querySelector('.bird-info');
 
-  const birdPlayer = BirdPlayer();
-  const birdImage = birdPlayer.querySelector('.bird-image');
-  const playButton = birdPlayer.querySelector('.playpause');
-  const seekSlider = birdPlayer.querySelector('.seek-slider');
+  const birdPlayerElement = birdPlayer.player;
+  const birdImage = birdPlayerElement.querySelector('.bird-image');
+  const playButton = birdPlayerElement.querySelector('.playpause');
+  const seekSlider = birdPlayerElement.querySelector('.seek-slider');
 
-  birdPlayer.classList.add('bird-player_vertical');
+  birdPlayerElement.classList.add('bird-player_vertical');
   birdImage.classList.add('bird-image_vertical');
   playButton.classList.add('playpause_vertical');
   seekSlider.classList.add('seek-slider_vertical');
 
-  birdInfoElement.append(birdPlayer);
-  birdPlayer.style.display = 'none';
+  birdInfoElement.append(birdPlayerElement);
+  birdPlayerElement.style.display = 'none';
 
-  initPlayer();
+  birdPlayer.initPlayer();
 };
 
 const addTextBlock = () => {
@@ -53,13 +55,8 @@ const changeDescription = (text) => {
 };
 
 const changePlayerInfo = (birdInfo) => {
-  const {
-    name,
-    species,
-    image,
-    audio,
-  } = birdInfo;
-
+  birdPlayer.changeTheBird(birdInfo);
+  birdPlayer.showFullInfo();
 };
 
 export const changeBird = (birdInfo) => {

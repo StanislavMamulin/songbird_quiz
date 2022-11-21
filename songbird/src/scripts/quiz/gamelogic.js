@@ -5,7 +5,6 @@ import {
   getInfoAboutBird,
 } from './getdata';
 import { quizCategories } from '../../data/birds';
-import { changeTheBird, showRightAnswer, pauseSong } from '../../components/BirdPlayer';
 import { answerStatuses } from '../../data/statuses';
 import { setStatusForButton } from '../../components/Answers/index';
 import { setActiveCategory } from './ui/ui';
@@ -15,6 +14,7 @@ import { changeBird } from '../../components/BirdInfo';
 let currentCategoryIndex = 0;
 let currentBird;
 let isAnswerFinded = false;
+let currentPlayer;
 
 export const answerClickHandler = (title) => {
   // change bird in birdInfo
@@ -29,8 +29,8 @@ export const answerClickHandler = (title) => {
   if (birdName === currentBird.name) { // correct answer
     setStatusForButton(birdName, answerStatuses.correct);
     isAnswerFinded = true;
-    showRightAnswer();
-    pauseSong();
+    currentPlayer.showRightAnswer();
+    currentPlayer.pauseSong();
     playCorrectAnswerSound();
   } else { // wrong answer
     setStatusForButton(birdName, answerStatuses.wrong);
@@ -50,8 +50,9 @@ export const switchToNextCategory = () => {
 
 export const getAnswersForCurrentCategory = () => getAnswersForCategory(currentCategoryIndex);
 
-export const startTheGame = () => {
+export const startTheGame = (player) => {
   currentBird = getRandomBirdFromCategory(currentCategoryIndex);
-  changeTheBird(currentBird);
+  currentPlayer = player;
+  player.changeTheBird(currentBird);
   setActiveCategory(currentCategoryIndex);
 };

@@ -5,7 +5,10 @@ import './style.css';
 import '../../styles/quiz/top-panel.css';
 import '../../styles/colors.css';
 import '../../styles/commonlayout.css';
+import { BirdPlayer } from '../../components/BirdPlayer';
+
+export const questionPlayer = new BirdPlayer();
 
 const answers = getAnswersForCurrentCategory();
-makeQuizUI(answers, answerClickHandler);
-startTheGame();
+makeQuizUI(questionPlayer, answers, answerClickHandler);
+startTheGame(questionPlayer);

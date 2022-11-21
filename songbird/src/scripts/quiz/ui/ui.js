@@ -1,5 +1,4 @@
 import { CategoryItem, activateCategory, disableCategory } from '../../../components/CategoryItem/index';
-import { BirdPlayer, initPlayer } from '../../../components/BirdPlayer';
 import { quizCategories } from '../../../data/birds';
 import { generateAnswersList } from '../../../components/Answers';
 import { initBirdInfo } from '../../../components/BirdInfo';
@@ -16,25 +15,19 @@ const fillInTheCategoriesList = () => {
   });
 };
 
-const addPlayer = () => {
+const addPlayer = (player) => {
   const currentQuestionElement = document.querySelector('.current-question');
-  const birdPlayer = BirdPlayer();
-  currentQuestionElement.append(birdPlayer);
-  initPlayer();
+  currentQuestionElement.append(player.player);
+  player.initPlayer();
 };
 
 const addBirdInfo = () => {
-  // const birdInfoElement = document.querySelector('.bird-info');
-  // const birdPlayer = BirdPlayer();
-  // birdPlayer.classList.add('bird-player_vertical');
-  // birdInfoElement.append(birdPlayer);
-  // initPlayer();
   initBirdInfo();
 };
 
-export const makeQuizUI = (answersList = [], answerClickHandler = () => {}) => {
+export const makeQuizUI = (player, answersList = [], answerClickHandler = () => {}) => {
   fillInTheCategoriesList();
-  addPlayer();
+  addPlayer(player);
   generateAnswersList(answersList, answerClickHandler);
   addBirdInfo();
 };
