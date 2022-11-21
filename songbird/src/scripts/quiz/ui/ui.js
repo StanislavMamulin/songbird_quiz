@@ -1,6 +1,7 @@
 import { CategoryItem } from '../../../components/CategoryItem/index';
 import { BirdPlayer, initPlayer } from '../../../components/BirdPlayer';
 import { quizCategories } from '../../../data/birds';
+import { generateAnswersList } from '../../../components/Answers';
 
 const fillInTheCategoriesList = () => {
   const categoriesListElement = document.querySelector('.question-categories');
@@ -16,7 +17,8 @@ const addPlayer = () => {
   initPlayer();
 };
 
-export const makeQuizUI = () => {
+export const makeQuizUI = (answersList = [], answerClickHandler = () => {}) => {
   fillInTheCategoriesList();
   addPlayer();
+  generateAnswersList(answersList, answerClickHandler);
 };
