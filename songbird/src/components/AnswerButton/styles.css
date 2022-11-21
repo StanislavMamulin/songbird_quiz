@@ -1,0 +1,30 @@
+.answer-item {
+  list-style: none;
+  width: 100%;
+  padding: 8px;
+
+  background-color: var(--list-bg-color);
+}
+
+.indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
+
+  background-color: var(--not-answered-color);
+}
+
+.indicator_correct {
+  background-color: var(--correct-color);
+}
+
+.indicator_wrong {
+  background-color: var(--wrong-color);
+}
+
+.answer-item__title {
+  display: inline;
+  color: var(--darkest-primary-color)
+}
