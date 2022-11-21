@@ -1,9 +1,13 @@
 :root {
-  --primary-color: #6A72BD;
-  --darker-primary-color: #4A52A4;
+  --primary-color: #6a72bd;
+  --darker-primary-color: #4a52a4;
   --darkest-primary-color: #303991;
-  --lighter-primary-color: #949BD8;
-  --lightest-primary-color: #C5C9EE;
+  --lighter-primary-color: #949bd8;
+  --lightest-primary-color: #c5c9ee;
+
+  --error-color: #cf000f;
+  --correct-color: #009944;
+  --not-answered-color: #91a3b0;
 }
 .main {
   background: url('../../assets/images/background.png');
