@@ -6,6 +6,7 @@ import '../../styles/quiz/top-panel.css';
 import '../../styles/colors.css';
 import '../../styles/commonlayout.css';
 import { BirdPlayer } from '../../components/BirdPlayer';
+import logo from '../../assets/vectors/logo.svg';
 
 export const questionPlayer = new BirdPlayer();
 
