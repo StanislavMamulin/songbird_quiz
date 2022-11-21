@@ -21,3 +21,9 @@
   overflow: scroll;
   text-align: justify;
 }
+
+@media screen and (min-width: 1300px) {
+  .bird-info {
+    height: 600px;
+  }
+}

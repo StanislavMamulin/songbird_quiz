@@ -4,15 +4,18 @@
   align-items: center;
 
   padding: 8px;
-  height: 200px;
+  min-height: 200px;
+  max-height: 400px;
 }
 
 .bird-image {
   margin-right: 16px;
 
   flex: 2;
-  height: 100%;
-  border-radius: 5px; 
+  max-height: 250px;
+  border-radius: 5px;
+
+  object-fit: contain;
 }
 
 .player {

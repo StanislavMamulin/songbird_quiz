@@ -41,3 +41,9 @@
   display: inline;
   color: var(--darkest-primary-color)
 }
+
+@media screen and (min-width: 1300px) {
+  .answer-item {
+    height: 72px;
+  }
+}
