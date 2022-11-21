@@ -115,3 +115,30 @@
 .seek-slider_vertical {
   padding-bottom: var(--margin-bottom-mini);
 }
+
+@media screen and (max-width: 768px) {
+  .bird-player {
+    flex-direction: column;
+    padding-bottom: 0;
+  }
+  
+  .bird-image {
+    margin: 0;
+    margin-bottom: var(--margin-bottom-mini);
+  
+    height: 40%;
+    border-radius: 5px; 
+  }
+  
+  .playpause {
+    width: 32px;
+  }
+  
+  .seek-slider {
+    padding-bottom: var(--margin-bottom-mini);
+  }
+
+  .bird-name {
+    text-align: center;
+  }
+}
