@@ -6,6 +6,10 @@
   background-color: var(--list-bg-color);
 }
 
+.answer-item:hover {
+  background-color: var(--hover-color);
+}
+
 .indicator {
   display: inline-block;
   width: 8px;
