@@ -4,11 +4,12 @@ import { answerStatuses } from '../../data/statuses';
 import './styles.css';
 import answerButton from './index.html';
 
-export const AnswerButton = ({ title }) => {
+export const AnswerButton = ({ title = '', onclick = () => {} }) => {
   const itemElement = htmlToElement(answerButton);
   const titleElement = itemElement.querySelector('.answer-item__title');
 
   titleElement.innerText = title;
+  itemElement.addEventListener('click', onclick);
 
   return itemElement;
 };
