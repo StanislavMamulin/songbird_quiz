@@ -9,3 +9,11 @@ export const CategoryItem = ({ title }) => {
 
   return itemElement;
 };
+
+export const activateCategory = (categoryElement) => {
+  categoryElement.classList.add('question-categories__item_active');
+};
+
+export const disableCategory = (categoryElement) => {
+  categoryElement.classList.remove('question-categories__item_active');
+};

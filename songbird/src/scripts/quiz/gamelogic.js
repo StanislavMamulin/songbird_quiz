@@ -3,6 +3,7 @@ import { quizCategories } from '../../data/birds';
 import { changeTheBird } from '../../components/BirdPlayer';
 import { answerStatuses } from '../../data/statuses';
 import { setStatusForButton } from '../../components/Answers/index';
+import { setActiveCategory } from './ui/ui';
 
 let currentCategoryIndex = 0;
 let currentBird;
@@ -37,4 +38,5 @@ export const getAnswersForCurrentCategory = () => getAnswersForCategory(currentC
 export const startTheGame = () => {
   currentBird = getRandomBirdFromCategory(currentCategoryIndex);
   changeTheBird(currentBird);
+  setActiveCategory(currentCategoryIndex);
 };
