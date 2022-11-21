@@ -90,7 +90,7 @@ const playSong = () => {
   playPauseImageElement.src = pauseIcon;
 };
 
-const pauseSong = () => {
+export const pauseSong = () => {
   currSong.pause();
   isPlaying = false;
 
