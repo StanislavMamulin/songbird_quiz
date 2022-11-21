@@ -10,6 +10,10 @@
   background-color: var(--hover-color);
 }
 
+.answer-item:active {
+  background-color: var(--selected-color);
+}
+
 .indicator {
   display: inline-block;
   width: 8px;
