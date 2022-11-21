@@ -52,14 +52,6 @@ const resetValues = () => {
   seekSliderElement.value = 0;
 };
 
-const resetTheBird = () => {
-  // change image
-  birdImageElement.src = secretBird;
-  // hide names
-  birdNameElement.textContent = SECRET_BIRD_NAME;
-  birdLatinNameElement.textContent = DEFAULT_LATIN_NAME;
-};
-
 const seekUpdate = () => {
   if (!Number.isNaN(currSong.duration)) {
     const seekPosition = currSong.currentTime * (100 / currSong.duration);
@@ -128,9 +120,59 @@ const addEventListeners = () => {
   seekSliderElement.addEventListener('change', seekTo);
 };
 
+const showBirdInfo = (birdInfo) => {
+  const {
+    imagePath = '',
+    birdName = '',
+    birdLatinName = '',
+  } = birdInfo;
+
+  birdImageElement.src = imagePath;
+  birdNameElement.textContent = birdName;
+  birdLatinNameElement.textContent = birdLatinName;
+};
+
+export const showRightAnswer = () => {
+  showBirdInfo({
+    imagePath: curBirdImagePath,
+    birdName: curBirdName,
+  });
+};
+
+export const showFullInfo = () => {
+  showBirdInfo({
+    imagePath: curBirdImagePath,
+    birdName: curBirdName,
+    birdLatinName: curBirdLatinName,
+  });
+};
+
+const hideTheBird = () => {
+  showBirdInfo({
+    imagePath: secretBird,
+    birdName: SECRET_BIRD_NAME,
+    birdLatinName: DEFAULT_LATIN_NAME,
+  });
+};
+
+export const changeTheBird = (birdInfo) => {
+  const {
+    name,
+    species,
+    image,
+    audio,
+  } = birdInfo;
+
+  hideTheBird();
+
+  curBirdName = name;
+  curBirdImagePath = image;
+  curBirdLatinName = species;
+  loadSong(audio);
+};
+
 export const initPlayer = () => {
   setElements();
   addEventListeners();
-  resetTheBird();
-  loadSong('https://www.xeno-canto.org/sounds/uploaded/VOLIQOYWKG/XC501190-190801_06.50h_zilvermeeuw_duinen%20van%20goeree_roep_2ex_overvliegend_gezien_.mp3');
+  hideTheBird();
 };
