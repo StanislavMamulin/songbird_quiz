@@ -5,6 +5,7 @@ import birdPlayer from './index.html';
 
 import pauseIcon from '../../assets/vectors/circle-pause.svg';
 import playIcon from '../../assets/vectors/circle-play.svg';
+import secretBird from '../../assets/images/bird-silhouettes.png';
 
 export const BirdPlayer = htmlToElement(birdPlayer);
 
@@ -15,13 +16,21 @@ let totalTimeElement;
 let playPauseElement;
 let playPauseImageElement;
 let soundSliderElement;
+let birdImageElement;
+let birdNameElement;
+let birdLatinNameElement;
 
 // constants
 const currSong = document.createElement('audio');
+const SECRET_BIRD_NAME = '* * * * * * * *';
+const DEFAULT_LATIN_NAME = '';
 
 // state variables
 let updateTimer;
 let isPlaying = false;
+let curBirdName = '';
+let curBirdLatinName = '';
+let curBirdImagePath;
 
 const setElements = () => {
   seekSliderElement = document.querySelector('.seek-slider__slider');
@@ -31,12 +40,24 @@ const setElements = () => {
   playPauseElement = document.querySelector('.playpause');
   playPauseImageElement = document.querySelector('.playpause__image');
   soundSliderElement = document.querySelector('.sound-slider__slider');
+
+  birdImageElement = document.querySelector('.bird-image');
+  birdNameElement = document.querySelector('.bird-name');
+  birdLatinNameElement = document.querySelector('.bird-lat-name');
 };
 
 const resetValues = () => {
   currentTimeElement.textContent = '00:00';
   totalTimeElement.textContent = '00:00';
   seekSliderElement.value = 0;
+};
+
+const resetTheBird = () => {
+  // change image
+  birdImageElement.src = secretBird;
+  // hide names
+  birdNameElement.textContent = SECRET_BIRD_NAME;
+  birdLatinNameElement.textContent = DEFAULT_LATIN_NAME;
 };
 
 const seekUpdate = () => {
