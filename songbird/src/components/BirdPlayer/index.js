@@ -7,7 +7,7 @@ import pauseIcon from '../../assets/vectors/circle-pause.svg';
 import playIcon from '../../assets/vectors/circle-play.svg';
 import secretBird from '../../assets/images/bird-silhouettes.png';
 
-export const BirdPlayer = htmlToElement(birdPlayer);
+export const BirdPlayer = () => htmlToElement(birdPlayer);
 
 let seekSliderElement;
 let currentTimeElement;

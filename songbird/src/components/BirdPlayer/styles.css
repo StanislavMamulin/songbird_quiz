@@ -19,6 +19,7 @@
   display: flex;
   flex-direction: column;
   flex: 5;
+  width: 100%;
 }
 
 .player__details {
@@ -91,4 +92,26 @@
 
 .sound-slider__volume_high {
   padding-left: 8px;
+}
+
+/* vertical orientation */
+
+.bird-player_vertical {
+  flex-direction: column;
+  padding-bottom: 0;
+}
+
+.bird-image_vertical {
+  margin: 0;
+
+  height: 40%;
+  border-radius: 5px; 
+}
+
+.playpause_vertical {
+  width: 32px;
+}
+
+.seek-slider_vertical {
+  padding-bottom: var(--margin-bottom-mini);
 }

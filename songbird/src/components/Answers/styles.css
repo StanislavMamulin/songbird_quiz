@@ -8,5 +8,8 @@
 
   padding: 0;
   margin: 0;
-  margin-bottom: var(--default-bottom-margin);
+  margin-right: 8px;
+
+  flex: 1;
+  height: 100%;
 }
