@@ -1,4 +1,5 @@
 import { htmlToElement } from '../../utils/htmlToElement';
+import { getTwoDigitsNumber } from '../../utils/text';
 import './styles.css';
 import birdPlayer from './index.html';
 
@@ -27,12 +28,34 @@ const setElements = () => {
 
 let updateTimer;
 let isPlaying = false;
-let currSong = document.createElement('audio');
+const currSong = document.createElement('audio');
 
 const resetValues = () => {
   currentTimeElement.textContent = '00:00';
   totalTimeElement.textContent = '00:00';
   seekSliderElement.value = 0;
+};
+
+const seekUpdate = () => {
+  if (!Number.isNaN(currSong.duration)) {
+    const seekPosition = currSong.currentTime * (100 / currSong.duration);
+    seekSliderElement.value = seekPosition;
+
+    // Calculate the time left and the total duration
+    let currentMinutes = Math.floor(currSong.currentTime / 60);
+    let currentSeconds = Math.floor(currSong.currentTime - currentMinutes * 60);
+    let durationMinutes = Math.floor(currSong.duration / 60);
+    let durationSeconds = Math.floor(currSong.duration - durationMinutes * 60);
+
+    currentMinutes = getTwoDigitsNumber(currentMinutes);
+    currentSeconds = getTwoDigitsNumber(currentSeconds);
+    durationMinutes = getTwoDigitsNumber(durationMinutes);
+    durationSeconds = getTwoDigitsNumber(durationSeconds);
+
+    // Display the updated duration
+    currentTimeElement.textContent = `${currentMinutes}:${currentSeconds}`;
+    totalTimeElement.textContent = `${durationMinutes}:${durationSeconds}`;
+  }
 };
 
 export const loadSong = (audioPath) => {
@@ -66,13 +89,23 @@ const playpauseSong = () => {
   }
 };
 
+const seekTo = () => {
+  const seekPostition = currSong.duration * (seekSliderElement.value / 100);
+  currSong.currentTime = seekPostition;
+};
+
+const setVolume = () => {
+  currSong.volume = soundSliderElement.value / 100;
+};
+
 const addEventListeners = () => {
-  playPauseElement.addEventListener('click', () => {
-    playpauseSong();
-  });
+  playPauseElement.addEventListener('click', playpauseSong);
+  soundSliderElement.addEventListener('change', setVolume);
+  seekSliderElement.addEventListener('change', seekTo);
 };
 
 export const initPlayer = () => {
   setElements();
   addEventListeners();
+  loadSong('https://www.xeno-canto.org/sounds/uploaded/VOLIQOYWKG/XC501190-190801_06.50h_zilvermeeuw_duinen%20van%20goeree_roep_2ex_overvliegend_gezien_.mp3');
 };
