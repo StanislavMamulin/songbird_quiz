@@ -1,0 +1,11 @@
+:root {
+  --primary-color: #6a72bd;
+  --darker-primary-color: #4a52a4;
+  --darkest-primary-color: #303991;
+  --lighter-primary-color: #949bd8;
+  --lightest-primary-color: #c5c9ee;
+
+  --wrong-color: #cf000f;
+  --correct-color: #009944;
+  --not-answered-color: #91a3b0;
+}
