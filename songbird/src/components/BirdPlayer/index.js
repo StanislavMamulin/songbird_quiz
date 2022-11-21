@@ -16,6 +16,13 @@ let playPauseElement;
 let playPauseImageElement;
 let soundSliderElement;
 
+// constants
+const currSong = document.createElement('audio');
+
+// state variables
+let updateTimer;
+let isPlaying = false;
+
 const setElements = () => {
   seekSliderElement = document.querySelector('.seek-slider__slider');
   currentTimeElement = document.querySelector('.seek-slider__current-time');
@@ -25,10 +32,6 @@ const setElements = () => {
   playPauseImageElement = document.querySelector('.playpause__image');
   soundSliderElement = document.querySelector('.sound-slider__slider');
 };
-
-let updateTimer;
-let isPlaying = false;
-const currSong = document.createElement('audio');
 
 const resetValues = () => {
   currentTimeElement.textContent = '00:00';
@@ -107,5 +110,6 @@ const addEventListeners = () => {
 export const initPlayer = () => {
   setElements();
   addEventListeners();
+  resetTheBird();
   loadSong('https://www.xeno-canto.org/sounds/uploaded/VOLIQOYWKG/XC501190-190801_06.50h_zilvermeeuw_duinen%20van%20goeree_roep_2ex_overvliegend_gezien_.mp3');
 };
